@@ -9,9 +9,9 @@
     postgresql_15
     cargo-pgrx
     # linter
-    #sqlfluff   # SQL
-    #shellcheck # Shell
-    #mdsh       # Markdown
+    sqlfluff   # SQL
+    shellcheck # Shell
+    mdsh       # Markdown
   ];
 
   # https://devenv.sh/scripts/
@@ -41,13 +41,19 @@
     package = pkgs.postgresql_15;
     settings.port = 5432;
     listen_addresses = "127.0.0.1";
-    initialDatabases = [{ name = "mydb"; }];
+    # initialDatabases = [{ name = "mygraph"; }];
     extensions = extensions: [
       extensions.age
     ];
     settings.shared_preload_libraries = "age";
     initialScript = ''
+      CREATE DATABASE "mygraph";
+      \c mygraph;
       CREATE EXTENSION IF NOT EXISTS age;
+      LOAD 'age';
+      -- Create Graph
+      SET search_path = ag_catalog, "$user", public;
+      SELECT create_graph('topology');
     '';
   };
 
