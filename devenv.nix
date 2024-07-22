@@ -54,6 +54,7 @@
   services.postgres = {
   };
 
+  # https://devenv.sh/pre-commit-hooks/
   pre-commit.hooks = {
     shellcheck.enable = true;
     mdsh.enable = true;
@@ -102,14 +103,12 @@
   # languages.php.enable = true;
   # languages.purescript.enable = true;
   # languages.python.enable = true;
-  # languages.python.version = "3.11.3";
   # languages.r.enable = true;
   # languages.racket.enable = true;
   # languages.raku.enable = true;
   # languages.robotframework.enable = true;
   # languages.ruby.enable = true;
   languages.rust.enable = true;
-  languages.rust.channel = "stable";
   # languages.scala.enable = true;
   # languages.shell.enable = true;
   # languages.solidity.enable = true;
@@ -122,10 +121,6 @@
   # languages.v.enable = true;
   # languages.vala.enable = true;
   # languages.zig.enable = true;
-
-  # https://devenv.sh/pre-commit-hooks/
-  pre-commit.hooks.shellcheck.enable = true;
-
 
   # See full reference at https://devenv.sh/reference/options/
 }
