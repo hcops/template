@@ -43,11 +43,11 @@
     listen_addresses = "127.0.0.1";
     initialDatabases = [{ name = "mydb"; }];
     extensions = extensions: [
-      extensions.timescaledb
+      extensions.age
     ];
-    settings.shared_preload_libraries = "timescaledb";
+    settings.shared_preload_libraries = "age";
     initialScript = ''
-      CREATE EXTENSION IF NOT EXISTS timescaledb;
+      CREATE EXTENSION IF NOT EXISTS age;
     '';
   };
 
