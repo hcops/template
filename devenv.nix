@@ -41,23 +41,9 @@
     package = pkgs.postgresql_15;
     settings.port = 5432;
     listen_addresses = "127.0.0.1";
-    # initialDatabases = [{ name = "mygraph"; }];
-    extensions = extensions: [
-      extensions.age
-    ];
-    settings.shared_preload_libraries = "age";
-    initialScript = ''
-      CREATE DATABASE "mygraph";
-      \c mygraph;
-      CREATE EXTENSION IF NOT EXISTS age;
-      LOAD 'age';
-      -- Create Graph
-      SET search_path = ag_catalog, "$user", public;
-      SELECT create_graph('topology');
-    '';
-  };
-
-  services.postgres = {
+    initialDatabases = [{ name = "mydb"; }];
+    # extensions = extensions: [];
+    # initialScript = '' '';
   };
 
   # https://devenv.sh/pre-commit-hooks/
