@@ -45,21 +45,6 @@
     # extensions = extensions: [];
     # initialScript = '' '';
   };
-
-  # https://devenv.sh/pre-commit-hooks/
-  pre-commit.hooks = {
-    shellcheck.enable = true;
-    mdsh.enable = true;
-    # SQL
-    sqllint = {
-      enable = true;
-      name = "SQL linter";
-      entry = "${pkgs.sqlfluff}/bin/sqlfluff lint --dialect postgres -e CP01,CP05,LT02 --nofail";
-      files = "\\.sql$";
-      pass_filenames = true;
-    };
-  };
-
   # https://devenv.sh/languages/
   # languages.ansible.enable = true;
   # languages.c.enable = true;
@@ -113,6 +98,23 @@
   # languages.v.enable = true;
   # languages.vala.enable = true;
   # languages.zig.enable = true;
+
+  # https://devenv.sh/pre-commit-hooks/
+  pre-commit.hooks = {
+    shellcheck.enable = true;
+    mdsh.enable = true;
+    # SQL
+    sqllint = {
+      enable = true;
+      name = "SQL linter";
+      entry = "${pkgs.sqlfluff}/bin/sqlfluff lint --dialect postgres -e CP01,CP05,LT02 --nofail";
+      files = "\\.sql$";
+      pass_filenames = true;
+    };
+  };
+
+  # https://devenv.sh/processes/
+  # processes.ping.exec = "ping example.com"
 
   # See full reference at https://devenv.sh/reference/options/
 }
